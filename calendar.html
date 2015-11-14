@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   <meta charset="utf-8">
-  <title>JS Bin</title>
+  <title>CALENDAR</title>
 </head>
 <body>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
   <script>
     $(function () {
 
@@ -19,20 +20,20 @@
 
       var days=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-      var mainDiv = $('<div class="container-fluid" id="mainPadding"></div>');
+      var mainDiv = $('<div class="container-fluid" id="main-padding"></div>');
       $('body').append(mainDiv);
 
 
 ///Create the ammend form
 
-var ammendForm = $('<div class="form hide" id="ammendForm"></div>');
+var ammendForm = $('<div class="form hide" id="ammend-form"></div>');
 $('body').append(ammendForm);
 
-var ammendFormTopRow = $('<div class="formSectionTop" id="ammend-top-row"></div>');
-$('[id="ammendForm"]').append(ammendFormTopRow);
+var ammendFormTopRow = $('<div class="form-section-top" id="ammend-top-row"></div>');
+$('[id="ammend-form"]').append(ammendFormTopRow);
 
-var ammendFormBottomRow = $('<div class="formSectionBottom" id="ammend-bottom-row">YOUR FULL-DAY EVENT</div>');
-$('[id="ammendForm"]').append(ammendFormBottomRow);
+var ammendFormBottomRow = $('<div class="form-section-bottom" id="ammend-bottom-row">YOUR FULL-DAY EVENT</div>');
+$('[id="ammend-form"]').append(ammendFormBottomRow);
 
 var formHeading = $('<h3 class="heading" id="ammend-form-heading">November 2015</h3>');
 $('[id="ammend-top-row"]').append(formHeading);
@@ -55,29 +56,29 @@ $('[class="comments"]').append(remove);
 
 ////Create the blank form
 
-var blankForm = $('<div class="form hide" id="blankForm"></div>');
+var blankForm = $('<div class="form hide" id="blank-form"></div>');
 $('body').append(blankForm);
 
-var blankFormTopRow = $('<div class="formSectionTop" id="blank-top-row"></div>');
-$('[id="blankForm"]').append(blankFormTopRow);
+var blankFormTopRow = $('<div class="form-section-top" id="blank-top-row"></div>');
+$('[id="blank-form"]').append(blankFormTopRow);
 
-var blankFormBottomRow = $('<div class="formSectionBottom" id="blank-bottom-row">What\'s your full day event?</div>');
-$('[id="blankForm"]').append(blankFormBottomRow);
+var blankFormBottomRow = $('<div class="form-section-bottom" id="blank-bottom-row">What\'s your full day event?</div>');
+$('[id="blank-form"]').append(blankFormBottomRow);
 
 var formHeading = $('<h3 class="heading" id="blank-form-heading">November 2015</h3>');
 $('[id="blank-top-row"]').append(formHeading);
 
-var eventForm = $('<form class="eventForm"></form>');
+var eventForm = $('<form class="event-form"></form>');
 $('[id="blank-bottom-row"]').append(eventForm);
 
 var eventBox = $('<textarea name="comments" id="comments" style="width:100%"></textarea>');
-$('[class="eventForm"]').append(eventBox);
+$('[class="event-form"]').append(eventBox);
 
 var save = $('<button class="button" value="Save">Save</button>');
-$('[class="eventForm"]').append(save);
+$('[class="event-form"]').append(save);
 
 var cancel = $('<button class="button" value="Cancel">Cancel</button>');
-$('[class="eventForm"]').append(cancel);
+$('[class="event-form"]').append(cancel);
 
 
 ////Create the months
@@ -86,11 +87,11 @@ $('[class="eventForm"]').append(cancel);
 var topRow = $('<div class="row" id="row1"></div>');
 $('[class="container-fluid"]').append(topRow);
 
-var monthDiv = $('<div class="col-xs-12" id="divMonth"></div>');
+var monthDiv = $('<div class="col-xs-12" id="div-month"></div>');
 $('[id="row1"]').append(monthDiv);
 
-var monthBox = $('<div class="blackBox" id="monthBox"></div>');
-$('[id="divMonth"]').append(monthBox);
+var monthBox = $('<div class="black-box" id="monthBox"></div>');
+$('[id="div-month"]').append(monthBox);
 
 var heading = $('<h1 class="heading" id="headingId">November 2015</h1>');
 $('[id="monthBox"]').append(heading);
@@ -116,11 +117,11 @@ for(iterator=2; iterator<9; iterator=iterator+1) {
 
     if ((counter-6)+(7*(iterator-3))===day)
     {
-      $('[id="box' + (boxNum+counter-1) + '"]').addClass("redBox"); 
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("red-box"); 
     }
 
     if (boxNum<8) {
-      $('[id="box' + (boxNum+counter-1) + '"]').removeClass("box").addClass("blackBox").text(days[counter-1]);
+      $('[id="box' + (boxNum+counter-1) + '"]').removeClass("box").addClass("black-box").text(days[counter-1]);
     }
 
     if (counter>6 && iterator===3) {
@@ -136,11 +137,11 @@ for(iterator=2; iterator<9; iterator=iterator+1) {
     }
 
     if(boxNum<15 && boxNum>7 && counter<7) {
-      $('[id="box' + (boxNum+counter-1) + '"]').addClass("greyBox").removeClass("box").text("-");
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("grey-box").removeClass("box").text("-");
     } 
 
     if (boxNum>36 && counter>1) {
-      $('[id="box' + (boxNum+counter-1) + '"]').addClass("greyBox").removeClass("box").text("-");
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("grey-box").removeClass("box").text("-");
 
     }
   }
@@ -170,7 +171,7 @@ $('[class="container-fluid"]').on('click', '.box', function (event) {
   var targetElement = event.target;
   event.stopPropagation();
   event.preventDefault();
-  $('[id="blankForm"]').addClass('show').removeClass('hide');
+  $('[id="blank-form"]').addClass('show').removeClass('hide');
   var targetId = $(targetElement).attr('id');
   var currentTextValue = idListObject[targetId];
   $('[id="comments"]').val(currentTextValue);
@@ -184,7 +185,7 @@ $('[class="container-fluid"]').on('click', '.shadedBox', function (event) {
   var targetElement = event.target;
   event.stopPropagation();
   event.preventDefault();
-  $('[id="ammendForm"]').addClass('show').removeClass('hide');
+  $('[id="ammend-form"]').addClass('show').removeClass('hide');
   var targetId = $(targetElement).attr('id');
   var currentTextValue = idListObject[targetId];
   $('[class="preview-box"]').text(currentTextValue);
@@ -199,9 +200,9 @@ $('[value="Save"]').on('click', function (event) {
   event.preventDefault();
   idListObject[currentTarget] = $('[id="comments"]').val();
   $('[id="' + currentTarget + '"]').addClass('shadedBox').removeClass('box');
-  $('[id="blankForm"]').addClass('hide').removeClass('show');
+  $('[id="blank-form"]').addClass('hide').removeClass('show');
   if (day==currentTargetElement.textContent) {
-    $('[id="' + currentTarget + '"]').removeClass('redBox').addClass('redBox');
+    $('[id="' + currentTarget + '"]').removeClass('red-box').addClass('red-box');
   }
 });
 
@@ -209,14 +210,14 @@ $('[value="Save"]').on('click', function (event) {
 
 $('[value="Cancel"]').on('click', function (event) {
   event.preventDefault();
-  $('[id="blankForm"]').addClass('hide').removeClass('show');
+  $('[id="blank-form"]').addClass('hide').removeClass('show');
 });
 
 ///Close
 
 $('[value="Close"]').on('click', function (event) {
   event.preventDefault();
-  $('[id="ammendForm"]').addClass('hide').removeClass('show');
+  $('[id="ammend-form"]').addClass('hide').removeClass('show');
 });
 
 ///Edit
@@ -225,8 +226,8 @@ $('[value="Edit"]').on('click', function (event) {
   event.preventDefault();
   var currentTextValue = idListObject[currentTarget];
   $('[id="comments"]').value = currentTextValue;
-  $('[id="blankForm"]').addClass('show').removeClass('hide');
-  $('[id="ammendForm"]').addClass('hide').removeClass('show');
+  $('[id="blank-form"]').addClass('show').removeClass('hide');
+  $('[id="ammend-form"]').addClass('hide').removeClass('show');
 });
 
 ///Remove
@@ -235,9 +236,9 @@ $('[value="Remove"]').on('click', function (event) {
   event.preventDefault();
   idListObject[currentTargetObject[currentTarget]] = "";
   $('[id="' + currentTarget + '"]').addClass('box').removeClass('shadedBox');
-  $('[id="ammendForm"]').addClass('hide').removeClass('show');
+  $('[id="ammend-form"]').addClass('hide').removeClass('show');
   if (day==currentTargetElement.textContent) {
-    $('[id="' + currentTarget + '"]').removeClass('redBox').addClass('redBox');
+    $('[id="' + currentTarget + '"]').removeClass('red-box').addClass('red-box');
   }
 
 });

@@ -3,7 +3,7 @@
 $shaded: rgb(210,220,255);
 $light-grey: rgb(240,240,240);
 
-#mainPadding{
+#main-padding{
 padding-left:25px;
 padding-right:25px;
 text-align: center;
@@ -24,7 +24,7 @@ background-color: white;
 margin: 0 10% 0 10%;
 top: 12vh;
 }
-.formSectionBottom {
+.form-section-bottom {
 border: solid black 4px;
 padding: 10px;
 height: 60vh;
@@ -33,7 +33,7 @@ background-color: white;
 .comments {
 text-align: center;
 }
-.eventForm {
+.event-form {
 text-align: center;
 }
 .hide {
@@ -50,12 +50,12 @@ height: 100%;
 width: 14.28571%;
 padding:3px;
 }
-.blackBox {
+.black-box {
 height: 100%;
 border: solid black 2px;
 }
 .box {  
-@extend .blackBox;
+@extend .black-box;
 box-shadow: 2px 2px 2px #787878;
 }
 div .col-xs-12 {
@@ -69,21 +69,21 @@ margin:0;
 line-height:10vh;
 text-align: center;
 }
-.greyBox{
-@extend .blackBox;
+.grey-box{
+@extend .black-box;
 border: solid $light-grey 2px;
 color: white;
 }
 .shadedBox {
-@extend .blackBox;
+@extend .black-box;
 background-color: $shaded;
 box-shadow: 2px 2px 2px #787878;
 }
-.redBox {  
-@extend .blackBox;
+.red-box {  
+@extend .black-box;
 border: solid red 2px;
 }
-.formSectionTop {
+.form-section-top {
 border: solid black 4px;
 padding: 10px;
 }
