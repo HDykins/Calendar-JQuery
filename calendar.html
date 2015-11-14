@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+  <script>
+    $(function () {
+
+      var today = new Date();
+      var day = today.getDate();
+
+      var stylesImport = $('<link href="css/styles.css" rel="stylesheet"></link>');
+      $('head').append(stylesImport);
+      var bootstrapImport = $('<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"></link>');
+      $('head').append(bootstrapImport);
+
+      var days=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+      var mainDiv = $('<div class="container-fluid" id="mainPadding"></div>');
+      $('body').append(mainDiv);
+
+
+///Create the ammend form
+
+var ammendForm = $('<div class="form hide" id="ammendForm"></div>');
+$('body').append(ammendForm);
+
+var ammendFormTopRow = $('<div class="formSectionTop" id="ammend-top-row"></div>');
+$('[id="ammendForm"]').append(ammendFormTopRow);
+
+var ammendFormBottomRow = $('<div class="formSectionBottom" id="ammend-bottom-row">YOUR FULL-DAY EVENT</div>');
+$('[id="ammendForm"]').append(ammendFormBottomRow);
+
+var formHeading = $('<h3 class="heading" id="ammend-form-heading">November 2015</h3>');
+$('[id="ammend-top-row"]').append(formHeading);
+
+var eventForm = $('<form class="comments"></form>');
+$('[id="ammend-bottom-row"]').append(eventForm);
+
+var previewBox = $('<p class="preview-box"></p>');
+$('[class="comments"]').append(previewBox);
+
+var close = $('<button class="button" type="reset" value="Close">Close</button>');
+$('[class="comments"]').append(close);
+
+var edit = $('<button class="button" type="submit" value="Edit">Edit</button>');
+$('[class="comments"]').append(edit);
+
+var remove = $('<button class="button" type="clear" value="Remove">Remove</button>');
+$('[class="comments"]').append(remove);
+
+
+////Create the blank form
+
+var blankForm = $('<div class="form hide" id="blankForm"></div>');
+$('body').append(blankForm);
+
+var blankFormTopRow = $('<div class="formSectionTop" id="blank-top-row"></div>');
+$('[id="blankForm"]').append(blankFormTopRow);
+
+var blankFormBottomRow = $('<div class="formSectionBottom" id="blank-bottom-row">What\'s your full day event?</div>');
+$('[id="blankForm"]').append(blankFormBottomRow);
+
+var formHeading = $('<h3 class="heading" id="blank-form-heading">November 2015</h3>');
+$('[id="blank-top-row"]').append(formHeading);
+
+var eventForm = $('<form class="eventForm"></form>');
+$('[id="blank-bottom-row"]').append(eventForm);
+
+var eventBox = $('<textarea name="comments" id="comments" style="width:100%"></textarea>');
+$('[class="eventForm"]').append(eventBox);
+
+var save = $('<button class="button" value="Save">Save</button>');
+$('[class="eventForm"]').append(save);
+
+var cancel = $('<button class="button" value="Cancel">Cancel</button>');
+$('[class="eventForm"]').append(cancel);
+
+
+////Create the months
+
+
+var topRow = $('<div class="row" id="row1"></div>');
+$('[class="container-fluid"]').append(topRow);
+
+var monthDiv = $('<div class="col-xs-12" id="divMonth"></div>');
+$('[id="row1"]').append(monthDiv);
+
+var monthBox = $('<div class="blackBox" id="monthBox"></div>');
+$('[id="divMonth"]').append(monthBox);
+
+var heading = $('<h1 class="heading" id="headingId">November 2015</h1>');
+$('[id="monthBox"]').append(heading);
+
+
+///Create the day boxes and the objects
+
+
+var boxNum = 1; 
+
+for(iterator=2; iterator<9; iterator=iterator+1) {
+
+  var topRow = $('<div class="row" id="row' + iterator + '"></div>');
+  $('[class="container-fluid"]').append(topRow);
+
+  for(counter=1; counter<8; counter=counter+1) {
+
+    var dayDiv = $('<div class="col-xs-1" id="divBox' + (boxNum+counter-1) + '"></div>');
+    $('[id="row' + iterator + '"]').append(dayDiv);
+
+    var box = $('<div class="box" id="box' + (boxNum+counter-1) + '">nub</div>');
+    $('[id="divBox' + (boxNum+counter-1) + '"]').append(box);
+
+    if ((counter-6)+(7*(iterator-3))===day)
+    {
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("redBox"); 
+    }
+
+    if (boxNum<8) {
+      $('[id="box' + (boxNum+counter-1) + '"]').removeClass("box").addClass("blackBox").text(days[counter-1]);
+    }
+
+    if (counter>6 && iterator===3) {
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("box").text((counter-6)+(7*(iterator-3)));
+    }
+
+    if (iterator>3 & iterator<8) {
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("box").text((counter-6)+(7*(iterator-3)));
+    }
+
+    if (counter<2 & iterator===8) {
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("box").text((counter-6)+(7*(iterator-3)));
+    }
+
+    if(boxNum<15 && boxNum>7 && counter<7) {
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("greyBox").removeClass("box").text("-");
+    } 
+
+    if (boxNum>36 && counter>1) {
+      $('[id="box' + (boxNum+counter-1) + '"]').addClass("greyBox").removeClass("box").text("-");
+
+    }
+  }
+  boxNum = boxNum +7;  
+}
+
+
+var idList = $('[class="box"]');
+
+var idListObject = {};
+var currentTargetObject = {};
+
+for(var something=0; something<idList.length; something = something+1) {
+  var elementToId = idList[something].getAttribute('id');
+  idListObject[elementToId] = "";
+  currentTargetObject[elementToId] = "";
+}
+
+///Day Selector
+
+var eventFlow = false;
+var currentTarget = 0;
+var currentTargetElement = 0;
+var targetId = 0;
+
+$('[class="container-fluid"]').on('click', '.box', function (event) {
+  var targetElement = event.target;
+  event.stopPropagation();
+  event.preventDefault();
+  $('[id="blankForm"]').addClass('show').removeClass('hide');
+  var targetId = $(targetElement).attr('id');
+  var currentTextValue = idListObject[targetId];
+  $('[id="comments"]').val(currentTextValue);
+  $('[id="blank-form-heading"]').text(targetElement.textContent + " of November 2015");
+  currentTargetObject[targetId] = targetId;
+  currentTarget = targetId;
+  currentTargetElement = targetElement;
+});
+
+$('[class="container-fluid"]').on('click', '.shadedBox', function (event) {
+  var targetElement = event.target;
+  event.stopPropagation();
+  event.preventDefault();
+  $('[id="ammendForm"]').addClass('show').removeClass('hide');
+  var targetId = $(targetElement).attr('id');
+  var currentTextValue = idListObject[targetId];
+  $('[class="preview-box"]').text(currentTextValue);
+  currentTarget =currentTargetObject[targetId];
+  currentTargetElement = $('[id="' + currentTarget + '"]');
+  $('[id="ammend-form-heading"]').text(currentTargetElement.text() + " of November 2015");
+});
+
+///Save
+
+$('[value="Save"]').on('click', function (event) {
+  event.preventDefault();
+  idListObject[currentTarget] = $('[id="comments"]').val();
+  $('[id="' + currentTarget + '"]').addClass('shadedBox').removeClass('box');
+  $('[id="blankForm"]').addClass('hide').removeClass('show');
+  if (day==currentTargetElement.textContent) {
+    $('[id="' + currentTarget + '"]').removeClass('redBox').addClass('redBox');
+  }
+});
+
+///Cancel
+
+$('[value="Cancel"]').on('click', function (event) {
+  event.preventDefault();
+  $('[id="blankForm"]').addClass('hide').removeClass('show');
+});
+
+///Close
+
+$('[value="Close"]').on('click', function (event) {
+  event.preventDefault();
+  $('[id="ammendForm"]').addClass('hide').removeClass('show');
+});
+
+///Edit
+
+$('[value="Edit"]').on('click', function (event) {
+  event.preventDefault();
+  var currentTextValue = idListObject[currentTarget];
+  $('[id="comments"]').value = currentTextValue;
+  $('[id="blankForm"]').addClass('show').removeClass('hide');
+  $('[id="ammendForm"]').addClass('hide').removeClass('show');
+});
+
+///Remove
+
+$('[value="Remove"]').on('click', function (event) {
+  event.preventDefault();
+  idListObject[currentTargetObject[currentTarget]] = "";
+  $('[id="' + currentTarget + '"]').addClass('box').removeClass('shadedBox');
+  $('[id="ammendForm"]').addClass('hide').removeClass('show');
+  if (day==currentTargetElement.textContent) {
+    $('[id="' + currentTarget + '"]').removeClass('redBox').addClass('redBox');
+  }
+
+});
+
+});
+</script>
+
+</body>
+</html>

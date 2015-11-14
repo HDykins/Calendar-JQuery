@@ -1,0 +1,99 @@
+@import "mediaq.scss";
+
+$shaded: rgb(210,220,255);
+$light-grey: rgb(240,240,240);
+
+#mainPadding{
+padding-left:25px;
+padding-right:25px;
+text-align: center;
+vertical-align: middle;
+line-height: 10vh;
+}
+.container-fluid {
+height: 52vh;
+padding: 10px;
+position: absolute;
+width:100%;
+background-color: white;
+}
+.form {
+position: absolute;
+width:80%;
+background-color: white;
+margin: 0 10% 0 10%;
+top: 12vh;
+}
+.formSectionBottom {
+border: solid black 4px;
+padding: 10px;
+height: 60vh;
+background-color: white;
+}
+.comments {
+text-align: center;
+}
+.eventForm {
+text-align: center;
+}
+.hide {
+display: none;
+}
+.show {
+display: inherit;
+}
+.row {
+height: 25%;
+}
+div .col-xs-1 {
+height: 100%;
+width: 14.28571%;
+padding:3px;
+}
+.blackBox {
+height: 100%;
+border: solid black 2px;
+}
+.box {  
+@extend .blackBox;
+box-shadow: 2px 2px 2px #787878;
+}
+div .col-xs-12 {
+height: 100%;
+padding:3px;
+}
+.heading {
+font-size: 2.5rem;
+padding:0;
+margin:0;
+line-height:10vh;
+text-align: center;
+}
+.greyBox{
+@extend .blackBox;
+border: solid $light-grey 2px;
+color: white;
+}
+.shadedBox {
+@extend .blackBox;
+background-color: $shaded;
+box-shadow: 2px 2px 2px #787878;
+}
+.redBox {  
+@extend .blackBox;
+border: solid red 2px;
+}
+.formSectionTop {
+border: solid black 4px;
+padding: 10px;
+}
+.preview-box {
+text-align: center;
+margin: 10vh 0 4vh 0;
+font-size: 4vh;
+}
+.button {
+width:30vh;
+margin: 5vh 5vh 20vh 5vh;
+height: 10vh;
+}
