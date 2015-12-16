@@ -29,7 +29,9 @@
   width: 80%;
   background-color: white;
   margin: 0 10% 0 10%;
-  top: 12vh; }
+  top: 12vh;
+  border: solid black 2px;
+   }
 
 .formSectionBottom {
   border: solid black 4px;
@@ -50,7 +52,10 @@
   display: inherit; }
 
 .row {
-  height: 25%; }
+  height: 25%;
+  text-align: center;
+  line-height: 10vh;
+   }
 
 div .col-xs-1 {
   height: 100%;
@@ -59,7 +64,8 @@ div .col-xs-1 {
 
 .blackBox, .box, .greyBox, .shadedBox, .redBox {
   height: 100%;
-  border: solid black 2px; }
+  border: solid black 2px; 
+}
 
 .box {
   box-shadow: 2px 2px 2px #787878; }
@@ -78,6 +84,9 @@ div .col-xs-12 {
 .greyBox {
   border: solid #f0f0f0 2px;
   color: white; }
+
+.black-box {
+  border: solid black 2px; }
 
 .shadedBox {
   background-color: #d2dcff;
